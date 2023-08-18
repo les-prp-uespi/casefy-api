@@ -13,15 +13,16 @@ datasource db {
 model ClinicalCase {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   type String
-  introduction String
-  pacient_data PacientData[]
-  nutritional_clinical_anamnesis NutritionalClinicalAnamnesis[]
+  introduction String 
+  pacient_data PacientData?
 }
 
 model PacientData {
-
-}
-
-model NutritionalClinicalAnamnesis {
-  
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  gender String?
+  age Int
+  profession String
+  nationality String
+  clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
+  clinicalCaseId String @unique @db.ObjectId
 }
