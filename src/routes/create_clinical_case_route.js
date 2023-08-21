@@ -16,13 +16,6 @@ router.post("/register", async (req, res) => {
     const profession = req.body.pacient_data.profession;
     const nationality = req.body.pacient_data.nationality;
 
-    console.log(type);
-    console.log(introduction);
-    console.log(gender);
-    console.log(age);
-    console.log(profession);
-    console.log(nationality);
-
     const result = await createClinicalCase(type, introduction, gender, age, profession, nationality);
 
     if (result == null) {
