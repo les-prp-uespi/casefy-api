@@ -8,8 +8,8 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({extended:false}));
 router.use(bodyParser.json());
 
-router.get("/clinicalcase", async (req, res) => {
-    const id = req.body.id;
+router.get("/clinicalcase/:id", async (req, res) => {
+    const id = req.params.id;
 
     console.log(id);
 
