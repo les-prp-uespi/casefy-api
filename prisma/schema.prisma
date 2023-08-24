@@ -195,43 +195,43 @@ model LaboratoryTests {
   hld_cholesterol Float
   ldl_cholesterol Float
   hemoglobin Float
-  hemoglobin_situation Float
+  hemoglobin_situation String
   hematocrit Float
-  hematocrit_situation Float
+  hematocrit_situation String
   vcm Float
-  vcm_situation Float
+  vcm_situation String
   hmc Float
-  hmc_situation Float
+  hmc_situation String
   chcm Float
-  chcm_situation Float
+  chcm_situation String
   leukocyte Float
-  leukocyte_situation Float
+  leukocyte_situation String
   segmented_neutrophils Float
-  segmented_neutrophils_situation Float
+  segmented_neutrophils_situation String
   lymphocytes Float
-  lymphocytes_situation Float
+  lymphocytes_situation String
   monocytes Float
-  monocytes_situation Float
+  monocytes_situation String
   platelets Float
-  platelets_situation Float
+  platelets_situation String
   triglycerides Float
-  triglycerides_situation Float
+  triglycerides_situation String
   glucose Float
-  glucose_situation Float
+  glucose_situation String
   insulin Float
-  insulin_situation Float
+  insulin_situation String
   uric_acid Float
-  uric_acid_situation Float
+  uric_acid_situation String
   direct_bilirubin Float
-  direct_bilirubin_situation Float
+  direct_bilirubin_situation String
   indirect_bilirubin Float
-  indirect_bilirubin_situation Float
+  indirect_bilirubin_situation String
   hemoglobin_glicada Float //ATENÇÃO AQUI
-  hemoglobin_glicada_situation Float
+  hemoglobin_glicada_situation String
   vitamin_d Float
-  vitamin_d_situation Float
+  vitamin_d_situation String
   rdw Float
-  rdw_situation Float
+  rdw_situation String
   urea Float
   serum_creatine Float
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
