@@ -264,8 +264,6 @@ router.post("/register", async (req, res) => {
         monounsaturated: req.body.food_plan.nutrients.monounsaturated,
     }
 
-    console.log(dataFoodRecall.meals);
-
     const result = await createClinicalCase(data, dataFoodRecall, dataFoodPlan);
 
     if (result == null) {
