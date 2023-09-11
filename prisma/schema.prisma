@@ -24,7 +24,23 @@ model ClinicalCase {
   food_plan FoodPlan?
   diagnosis String
   nutritional_conduct String
-  questions String[]
+  questions Quizz?
+}
+
+model Quizz {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  questions Questions[]
+  clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
+  clinicalCaseId String @unique @db.ObjectId
+}
+
+model Questions {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  question String
+  options String[]
+  answer String
+  quizz Quizz? @relation(fields: [quizzId], references: [id])
+  quizzId String @unique @db.ObjectId
 }
 
 model PacientData {
