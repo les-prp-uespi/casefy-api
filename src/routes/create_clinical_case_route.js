@@ -177,26 +177,27 @@ router.post("/register", async (req, res) => {
 
     const dataFoodRecall = {
         //FoodRecall
+        meals: req.body.food_recall.meals,
         //Meals
         meals_name: req.body.food_recall.meals.meals_name,
-        proteins: req.body.food_recall.meals.proteins,
-        carbohydrates: req.body.food_recall.meals.carbohydrates,
-        lipids: req.body.food_recall.meals.lipids,
-        calory: req.body.food_recall.meals.calory,
-        amount: req.body.food_recall.meals.amount,
+        proteins: req.body.food_recall.meals.proteinsmeal,
+        carbohydrates: req.body.food_recall.meals.carbohydratesmeal,
+        lipids: req.body.food_recall.meals.lipidsmeal,
+        calory: req.body.food_recall.meals.calorymeal,
+        amount: req.body.food_recall.meals.amountmeal,
         //TotalGramMeal
-        proteins: req.body.food_recall.total_gram_meal.proteins,
-        carbohydrates: req.body.food_recall.total_gram_meal.carbohydrates,
-        lipids: req.body.food_recall.total_gram_meal.lipids,
-        calory: req.body.food_recall.total_gram_meal.calory,
-        amount: req.body.food_recall.total_gram_meal.amount,
+        proteins: req.body.food_recall.total_gram_meal.proteinsgrammeal,
+        carbohydrates: req.body.food_recall.total_gram_meal.carbohydratesgrammeal,
+        lipids: req.body.food_recall.total_gram_meal.lipidsgrammeal,
+        calory: req.body.food_recall.total_gram_meal.calorygrammeal,
+        amount: req.body.food_recall.total_gram_meal.amountgrammeal,
         //Geral
         amount: req.body.food_recall.geral.amount,
         energy: req.body.food_recall.geral.energy,
         //Macronutrients
-        protein: req.body.food_recall.macronutrients.protein,
+        protein: req.body.food_recall.macronutrients.proteinmacro,
         cho: req.body.food_recall.macronutrients.cho,
-        lipids: req.body.food_recall.macronutrients.lipids,
+        lipids: req.body.food_recall.macronutrients.lipidsmacro,
         //Nutrients
         fiber: req.body.food_recall.nutrients.fiber,
         sodium: req.body.food_recall.nutrients.sodium,
@@ -264,7 +265,37 @@ router.post("/register", async (req, res) => {
         monounsaturated: req.body.food_plan.nutrients.monounsaturated,
     }
 
-    const result = await createClinicalCase(data, dataFoodRecall, dataFoodPlan);
+    const dataQuizz = {
+        questions: req.body.quizz.questions,
+        question: req.body.quizz.questions.question,
+        options: req.body.quizz.questions.options,
+        answer: req.body.quizz.questions.answer
+    }
+
+    console.log(dataQuizz.questions.length);
+
+    for (var c = 0; c < dataFoodRecall.meals.length; c++) {
+        dataFoodRecall.meals_name = req.body.food_recall.meals[c].meals_name;
+        dataFoodRecall.protein = req.body.food_recall.meals[c].proteinsmeal;
+        dataFoodRecall.carbohydrates = req.body.food_recall.meals[c].carbohydratesmeal;
+        dataFoodRecall.lipids = req.body.food_recall.meals[c].lipidsmeal;
+        dataFoodRecall.calory = req.body.food_recall.meals[c].calorymeal;
+        dataFoodRecall.amount = req.body.food_recall.meals[c].amountmeal;
+    }
+
+    var questionsList = [];
+
+    for (var i = 0; i < dataQuizz.questions.length; i++) {
+        dataQuizz.question = req.body.quizz.questions[i].question;
+        dataQuizz.options = req.body.quizz.questions[i].options;
+        dataQuizz.answer = req.body.quizz.questions[i].answer;
+        questionsList.push(dataQuizz.questions[i]);
+    }
+
+    console.log(questionsList);
+    console.log(dataQuizz.questions)
+
+    const result = await createClinicalCase(data, dataFoodRecall, dataFoodPlan, dataQuizz);
 
     if (result == null) {
         res.status(400).json({"message": "Register Error"});
