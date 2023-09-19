@@ -3,7 +3,8 @@ const prisma = require("../database/database.js");
 const createClinicalCase = async (
     data,
     dataFoodRecall,
-    dataFoodPlan
+    dataFoodPlan,
+    dataQuizz
 ) => {
     const clinicalcase = await prisma.clinicalCase.create({
         data: {
@@ -11,7 +12,17 @@ const createClinicalCase = async (
             introduction: data.introduction,
             diagnosis: data.diagnosis,
             nutritional_conduct: data.nutritional_conduct,
-            questions: data.questions,
+            /*quizz: {
+                create: {
+                    questions: {
+                        create: {
+                            question: dataQuizz.question,
+                            options: dataQuizz.options,
+                            answer: dataQuizz.answer
+                        }
+                    }
+                }
+            },*/
             pacient_data: {
                 create: {
                     gender: data.gender,
@@ -315,6 +326,7 @@ const createClinicalCase = async (
         },
         include: {
             pacient_data: true,
+            //questions: true,
             nutritional_clinical_anamnesis: {
                 include: {
                     physical_activities: true
