@@ -24,7 +24,7 @@ model ClinicalCase {
   food_plan FoodPlan?
   diagnosis String
   nutritional_conduct String
-  questions Quizz?
+  quizz Quizz?
 }
 
 model Quizz {
