@@ -5,7 +5,7 @@ const getAllClinicalCasePacientData = async () => {
         include: {pacient_data: true}
     });
 
-    console.log(findAllClinicalCasePacientData);
+    //console.log(findAllClinicalCasePacientData);
 
     return findAllClinicalCasePacientData;
 };
