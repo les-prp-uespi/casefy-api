@@ -9,7 +9,6 @@ router.use(bodyParser.urlencoded({extended:false}));
 router.use(bodyParser.json());
 
 router.post("/register", async (req, res) => {
-
     const data = {
         type : req.body.type,
         introduction : req.body.introduction,
@@ -175,96 +174,6 @@ router.post("/register", async (req, res) => {
         serum_creatine: req.body.laboratory_tests.serum_creatine,
     }
 
-    const dataFoodRecall = {
-        //FoodRecall
-        meals: req.body.food_recall.meals,
-        //Meals
-        meals_name: req.body.food_recall.meals.meals_name,
-        proteins: req.body.food_recall.meals.proteinsmeal,
-        carbohydrates: req.body.food_recall.meals.carbohydratesmeal,
-        lipids: req.body.food_recall.meals.lipidsmeal,
-        calory: req.body.food_recall.meals.calorymeal,
-        amount: req.body.food_recall.meals.amountmeal,
-        //TotalGramMeal
-        proteins: req.body.food_recall.total_gram_meal.proteinsgrammeal,
-        carbohydrates: req.body.food_recall.total_gram_meal.carbohydratesgrammeal,
-        lipids: req.body.food_recall.total_gram_meal.lipidsgrammeal,
-        calory: req.body.food_recall.total_gram_meal.calorygrammeal,
-        amount: req.body.food_recall.total_gram_meal.amountgrammeal,
-        //Geral
-        amount: req.body.food_recall.geral.amount,
-        energy: req.body.food_recall.geral.energy,
-        //Macronutrients
-        protein: req.body.food_recall.macronutrients.proteinmacro,
-        cho: req.body.food_recall.macronutrients.cho,
-        lipids: req.body.food_recall.macronutrients.lipidsmacro,
-        //Nutrients
-        fiber: req.body.food_recall.nutrients.fiber,
-        sodium: req.body.food_recall.nutrients.sodium,
-        vitamin_a_retinol: req.body.food_recall.nutrients.vitamin_a_retinol,
-        vitamin_d_calciferol: req.body.food_recall.nutrients.vitamin_d_calciferol,
-        vitamin_b1_thiamine: req.body.food_recall.nutrients.vitamin_b1_thiamine,
-        vitamin_b3_niacin: req.body.food_recall.nutrients.vitamin_b3_niacin,
-        vitamin_b9_folic_acid: req.body.food_recall.nutrients.vitamin_b9_folic_acid,
-        iron: req.body.food_recall.nutrients.iron,
-        potassium: req.body.food_recall.nutrients.potassium,
-        magnesium: req.body.food_recall.nutrients.magnesium,
-        total_sugar: req.body.food_recall.nutrients.total_sugar,
-        cholesterol: req.body.food_recall.nutrients.cholesterol,
-        polyunsaturated: req.body.food_recall.nutrients.polyunsaturated,
-        calcium: req.body.food_recall.nutrients.calcium,
-        selenium: req.body.food_recall.nutrients.selenium,
-        vitamin_c_ascorbic_acid: req.body.food_recall.nutrients.vitamin_c_ascorbic_acid,
-        vitamin_e_tocopherol: req.body.food_recall.nutrients.vitamin_e_tocopherol,
-        vitamin_b2_riboflavin: req.body.food_recall.nutrients.vitamin_b2_riboflavin,
-        vitamin_b6_pyridoxine: req.body.food_recall.nutrients.vitamin_b6_pyridoxine,
-        vitamin_b12_cobalamin: req.body.food_recall.nutrients.vitamin_b12_cobalamin,
-        phosphor: req.body.food_recall.nutrients.phosphor,
-        zinc: req.body.food_recall.nutrients.zinc,
-        manganese: req.body.food_recall.nutrients.manganese,
-        trans: req.body.food_recall.nutrients.trans,
-        saturated: req.body.food_recall.nutrients.saturated,
-        monounsaturated: req.body.food_recall.nutrients.monounsaturated,
-    }
-
-    const dataFoodPlan = {
-        //FoodPlan
-        //GeralFoodPlan
-        amount: req.body.food_plan.geral.amount,
-        energy: req.body.food_plan.geral.energy,
-        //MacronutrientsFoodPlan
-        protein: req.body.food_plan.macronutrients.protein,
-        cho: req.body.food_plan.macronutrients.cho,
-        lipids: req.body.food_plan.macronutrients.lipids,
-        //NutrientsFoodPlan
-        fiber: req.body.food_plan.nutrients.fiber,
-        sodium: req.body.food_plan.nutrients.sodium,
-        vitamin_a_retinol: req.body.food_plan.nutrients.vitamin_a_retinol,
-        vitamin_d_calciferol: req.body.food_plan.nutrients.vitamin_d_calciferol,
-        vitamin_b1_thiamine: req.body.food_plan.nutrients.vitamin_b1_thiamine,
-        vitamin_b3_niacin: req.body.food_plan.nutrients.vitamin_b3_niacin,
-        vitamin_b9_folic_acid: req.body.food_plan.nutrients.vitamin_b9_folic_acid,
-        iron: req.body.food_plan.nutrients.iron,
-        potassium: req.body.food_plan.nutrients.potassium,
-        magnesium: req.body.food_plan.nutrients.magnesium,
-        total_sugar: req.body.food_plan.nutrients.total_sugar,
-        cholesterol: req.body.food_plan.nutrients.cholesterol,
-        polyunsaturated: req.body.food_plan.nutrients.polyunsaturated,
-        calcium: req.body.food_plan.nutrients.calcium,
-        selenium: req.body.food_plan.nutrients.selenium,
-        vitamin_c_ascorbic_acid: req.body.food_plan.nutrients.vitamin_c_ascorbic_acid,
-        vitamin_e_tocopherol: req.body.food_plan.nutrients.vitamin_e_tocopherol,
-        vitamin_b2_riboflavin: req.body.food_plan.nutrients.vitamin_b2_riboflavin,
-        vitamin_b6_pyridoxine: req.body.food_plan.nutrients.vitamin_b6_pyridoxine,
-        vitamin_b12_cobalamin: req.body.food_plan.nutrients.vitamin_b12_cobalamin,
-        phosphor: req.body.food_plan.nutrients.phosphor,
-        zinc: req.body.food_plan.nutrients.zinc,
-        manganese: req.body.food_plan.nutrients.manganese,
-        trans: req.body.food_plan.nutrients.trans,
-        saturated: req.body.food_plan.nutrients.saturated,
-        monounsaturated: req.body.food_plan.nutrients.monounsaturated,
-    }
-
     const dataQuizz = {
         questions: req.body.quizz.questions,
         question: req.body.quizz.questions.question,
@@ -273,15 +182,6 @@ router.post("/register", async (req, res) => {
     }
 
     console.log(dataQuizz.questions.length);
-
-    for (var c = 0; c < dataFoodRecall.meals.length; c++) {
-        dataFoodRecall.meals_name = req.body.food_recall.meals[c].meals_name;
-        dataFoodRecall.protein = req.body.food_recall.meals[c].proteinsmeal;
-        dataFoodRecall.carbohydrates = req.body.food_recall.meals[c].carbohydratesmeal;
-        dataFoodRecall.lipids = req.body.food_recall.meals[c].lipidsmeal;
-        dataFoodRecall.calory = req.body.food_recall.meals[c].calorymeal;
-        dataFoodRecall.amount = req.body.food_recall.meals[c].amountmeal;
-    }
 
     var questionsList = [];
 
@@ -292,10 +192,7 @@ router.post("/register", async (req, res) => {
         questionsList.push(dataQuizz.questions[i]);
     }
 
-    console.log(questionsList);
-    console.log(dataQuizz.questions)
-
-    const result = await createClinicalCase(data, dataFoodRecall, dataFoodPlan, dataQuizz);
+    const result = await createClinicalCase(data, dataQuizz);
 
     if (result == null) {
         res.status(400).json({"message": "Register Error"});
