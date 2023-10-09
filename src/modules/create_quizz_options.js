@@ -1,15 +1,17 @@
 const prisma = require("../database/database.js");
 
 const createQuizzOptions = async (
-    dataOptions,
+    question,
+    options,
+    answer,
     quizzId
 ) => {
     const quizzOptions = await prisma.questions.create({
         data: {
             quizzId: quizzId,
-            question: dataOptions.question,
-            options: dataOptions.options,
-            answer: dataOptions.answer
+            question: question,
+            options: options,
+            answer: answer
         }
     });
 

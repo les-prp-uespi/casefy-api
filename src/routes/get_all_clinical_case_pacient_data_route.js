@@ -14,7 +14,9 @@ router.get("/clinicalcases", async (req, res) => {
     if (result == null) {
         res.status(400).json({"message": "Clinical Case not find"});
     } else {
-        res.status(200).json(result);
+        res.status(200).json({
+            "clinicalcases": result
+        });
     }
 });
 

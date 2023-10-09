@@ -12,8 +12,8 @@ datasource db {
 
 model ClinicalCase {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  type String
-  introduction String 
+  type String?
+  introduction String?
   pacient_data PacientData?
   nutritional_clinical_anamnesis NutritionalClinicalAnamnesis?
   habits Habits?
@@ -22,8 +22,8 @@ model ClinicalCase {
   laboratory_tests LaboratoryTests?
   food_recall FoodRecall?
   food_plan FoodPlan?
-  diagnosis String
-  nutritional_conduct String
+  diagnosis String?
+  nutritional_conduct String?
   quizz Quizz?
 }
 
@@ -36,9 +36,9 @@ model Quizz {
 
 model Questions {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  question String
+  question String?
   options String[]
-  answer String
+  answer String?
   quizz Quizz? @relation(fields: [quizzId], references: [id])
   quizzId String @unique @db.ObjectId
 }
@@ -46,28 +46,28 @@ model Questions {
 model PacientData {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   gender String?
-  age Int
-  profession String
-  nationality String
+  age Int?
+  profession String?
+  nationality String?
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
   clinicalCaseId String @unique @db.ObjectId
 }
 
 model NutritionalClinicalAnamnesis {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  psychological_condition String
-  previous_pathologies String
-  family_background String
-  gastrointestinal_diseases String
-  gastrointestinal_complaints String
-  evacuations String
-  stool_consistency String
-  stool_coloring String
-  use_of_laxatives String
-  medicines_use_at_home String
-  alternative_medicines String
-  replacement_of String
-  conditions_that_affect_get String
+  psychological_condition String?
+  previous_pathologies String?
+  family_background String?
+  gastrointestinal_diseases String?
+  gastrointestinal_complaints String?
+  evacuations String?
+  stool_consistency String?
+  stool_coloring String?
+  use_of_laxatives String?
+  medicines_use_at_home String?
+  alternative_medicines String?
+  replacement_of String?
+  conditions_that_affect_get String?
   physical_activities PhysicalActivities?
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
   clinicalCaseId String @unique @db.ObjectId
@@ -75,56 +75,56 @@ model NutritionalClinicalAnamnesis {
 
 model PhysicalActivities {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  practice String
-  frequency String
-  duration Float
-  activity_practiced String
+  practice String?
+  frequency String?
+  duration Float?
+  activity_practiced String?
   nutritionalClinicalAnamnesis NutritionalClinicalAnamnesis? @relation(fields: [nutritionalClinicalAnamnesisId], references: [id])
   nutritionalClinicalAnamnesisId String @unique @db.ObjectId
 }
 
 model Habits {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  smoker String
-  smoker_how_long String
-  cigarettes_a_day Int
-  alcoholism String
-  frequency_alcoholism String
-  type_alcoholism String
-  amount_of_alcohol String
+  smoker String?
+  smoker_how_long String?
+  cigarettes_a_day Int?
+  alcoholism String?
+  frequency_alcoholism String?
+  type_alcoholism String?
+  amount_of_alcohol String?
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
   clinicalCaseId String @unique @db.ObjectId
 }
 
 model FoodConditions {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  limitation_for_food_preparation String
-  current_clinical_condition String
-  food_allergy_or_condition String
-  allergy_to_the_following_foods String
-  use_of_supplements String
-  used_supplement String
-  food_aversion String
-  food_preference String
-  loss_of_appetite String
-  loss_of_aptitude_time String
-  loss_of_appetite_because String
-  changed_diet_consistency String
-  changed_diet_consistency_time String
-  changed_diet_consistency_because String
-  dining_place String
-  who_buys_the_food String
-  who_prepares_the_food String
-  food_storage String
-  way_of_preparing_food String
+  limitation_for_food_preparation String?
+  current_clinical_condition String?
+  food_allergy_or_condition String?
+  allergy_to_the_following_foods String?
+  use_of_supplements String?
+  used_supplement String?
+  food_aversion String?
+  food_preference String?
+  loss_of_appetite String?
+  loss_of_aptitude_time String?
+  loss_of_appetite_because String?
+  changed_diet_consistency String?
+  changed_diet_consistency_time String?
+  changed_diet_consistency_because String?
+  dining_place String?
+  who_buys_the_food String?
+  who_prepares_the_food String?
+  food_storage String?
+  way_of_preparing_food String?
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
   clinicalCaseId String @unique @db.ObjectId
 }
 
 model AnthropometricAssessment {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  size Float
-  weight Float
+  size Float?
+  weight Float?
   circumferences Circumferences?
   skin_folds SkinFolds?
   anthropometric_evaluation_results AnthropometricEvaluationResults?
@@ -134,122 +134,122 @@ model AnthropometricAssessment {
 
 model Circumferences {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  shoulder Float
-  waist Float
-  hip Float
-  left_thigh Float
-  left_proximal_thigh Float
-  left_calf Float
-  right_fist Float
-  relaxed_right_arm Float
-  right_contracted_arm Float
-  right_forearm Float
-  breastplate Float
-  abdomen Float
-  right_thigh Float
-  right_proximal_thigh Float
-  right_calf Float
-  neck Float
-  left_fist Float
-  relaxed_left_arm Float
-  left_contracted_arm Float
-  left_forearm Float
+  shoulder Float?
+  waist Float?
+  hip Float?
+  left_thigh Float?
+  left_proximal_thigh Float?
+  left_calf Float?
+  right_fist Float?
+  relaxed_right_arm Float?
+  right_contracted_arm Float?
+  right_forearm Float?
+  breastplate Float?
+  abdomen Float?
+  right_thigh Float?
+  right_proximal_thigh Float?
+  right_calf Float?
+  neck Float?
+  left_fist Float?
+  relaxed_left_arm Float?
+  left_contracted_arm Float?
+  left_forearm Float?
   anthropometricAssessment AnthropometricAssessment? @relation(fields: [anthropometricAssessmentId], references: [id])
   anthropometricAssessmentId String @unique @db.ObjectId
 }
 
 model SkinFolds {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  biceps Float
-  triceps Float
-  middle_axillary Float
-  chest Float
-  middle_calf Float
-  abdominal Float
-  suprailiac Float
-  subscapular Float
-  thigh Float
+  biceps Float?
+  triceps Float?
+  middle_axillary Float?
+  chest Float?
+  middle_calf Float?
+  abdominal Float?
+  suprailiac Float?
+  subscapular Float?
+  thigh Float?
   anthropometricAssessment AnthropometricAssessment? @relation(fields: [anthropometricAssessmentId], references: [id])
   anthropometricAssessmentId String @unique @db.ObjectId
 }
 
 model AnthropometricEvaluationResults {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  current_bmi Float
-  recommended_bmi_min Float
-  recommended_bmi_max Float
-  bmi_situation String
-  ideal_weight Float
-  fat_mass_percentage Float
-  fat_mass_percentage_recommended Float
-  fat_mass_percentage_situation String
-  percentage_of_lean_mass Float
-  percentage_of_lean_mass_recommended Float
-  percentage_of_lean_mass_situation String
-  fat_mass Float
-  fat_mass_recommended Float
-  fat_mass_situation String
-  lean_mass Float
-  lean_mass_recommended Float
-  lean_mass_situation String
-  sum_of_folds Float
-  waist_hip_ratio Float
-  waist_hip_ratio_situation String
-  arm_muscle_area Float
-  arm_muscle_area_situation String
-  arm_fat_area Float
-  arm_fat_area_situation String
+  current_bmi Float?
+  recommended_bmi_min Float?
+  recommended_bmi_max Float?
+  bmi_situation String?
+  ideal_weight Float?
+  fat_mass_percentage Float?
+  fat_mass_percentage_recommended Float?
+  fat_mass_percentage_situation String?
+  percentage_of_lean_mass Float?
+  percentage_of_lean_mass_recommended Float?
+  percentage_of_lean_mass_situation String?
+  fat_mass Float?
+  fat_mass_recommended Float?
+  fat_mass_situation String?
+  lean_mass Float?
+  lean_mass_recommended Float?
+  lean_mass_situation String?
+  sum_of_folds Float?
+  waist_hip_ratio Float?
+  waist_hip_ratio_situation String?
+  arm_muscle_area Float?
+  arm_muscle_area_situation String?
+  arm_fat_area Float?
+  arm_fat_area_situation String?
   anthropometricAssessment AnthropometricAssessment? @relation(fields: [anthropometricAssessmentId], references: [id])
   anthropometricAssessmentId String @unique @db.ObjectId
 }
 
 model LaboratoryTests {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  glycemia Float
-  plasma_potassium Float
-  total_cholesterol Float
-  hld_cholesterol Float
-  ldl_cholesterol Float
-  hemoglobin Float
-  hemoglobin_situation String
-  hematocrit Float
-  hematocrit_situation String
-  vcm Float
-  vcm_situation String
-  hmc Float
-  hmc_situation String
-  chcm Float
-  chcm_situation String
-  leukocyte Float
-  leukocyte_situation String
-  segmented_neutrophils Float
-  segmented_neutrophils_situation String
-  lymphocytes Float
-  lymphocytes_situation String
-  monocytes Float
-  monocytes_situation String
-  platelets Float
-  platelets_situation String
-  triglycerides Float
-  triglycerides_situation String
-  glucose Float
-  glucose_situation String
-  insulin Float
-  insulin_situation String
-  uric_acid Float
-  uric_acid_situation String
-  direct_bilirubin Float
-  direct_bilirubin_situation String
-  indirect_bilirubin Float
-  indirect_bilirubin_situation String
-  hemoglobin_glicada Float //ATENÇÃO AQUI
-  hemoglobin_glicada_situation String
-  vitamin_d Float
-  vitamin_d_situation String
-  rdw Float
-  rdw_situation String
-  urea Float
-  serum_creatine Float
+  glycemia Float?
+  plasma_potassium Float?
+  total_cholesterol Float?
+  hld_cholesterol Float?
+  ldl_cholesterol Float?
+  hemoglobin Float?
+  hemoglobin_situation String?
+  hematocrit Float?
+  hematocrit_situation String?
+  vcm Float?
+  vcm_situation String?
+  hmc Float?
+  hmc_situation String?
+  chcm Float?
+  chcm_situation String?
+  leukocyte Float?
+  leukocyte_situation String?
+  segmented_neutrophils Float?
+  segmented_neutrophils_situation String?
+  lymphocytes Float?
+  lymphocytes_situation String?
+  monocytes Float?
+  monocytes_situation String?
+  platelets Float?
+  platelets_situation String?
+  triglycerides Float?
+  triglycerides_situation String?
+  glucose Float?
+  glucose_situation String?
+  insulin Float?
+  insulin_situation String?
+  uric_acid Float?
+  uric_acid_situation String?
+  direct_bilirubin Float?
+  direct_bilirubin_situation String?
+  indirect_bilirubin Float?
+  indirect_bilirubin_situation String?
+  hemoglobin_glicada Float? //ATENÇÃO AQUI
+  hemoglobin_glicada_situation String?
+  vitamin_d Float?
+  vitamin_d_situation String?
+  rdw Float?
+  rdw_situation String?
+  urea Float?
+  serum_creatine Float?
   clinicalCase ClinicalCase? @relation(fields: [clinicalCaseId], references: [id])
   clinicalCaseId String @unique @db.ObjectId
 }

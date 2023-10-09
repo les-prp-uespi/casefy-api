@@ -18,6 +18,8 @@ router.post("/createoptions/:id", async (req, res) => {
 
     const result = await createQuizzOption(dataOptions, quizzId);
 
+    console.log(result);
+
     if (result == null) {
         res.status(400).json({"message": "Register Error"});
     } else {

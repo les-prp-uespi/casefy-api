@@ -1,7 +1,8 @@
 const prisma = require("../database/database.js");
 
 const createQuizz = async (
-    clinicalCaseId
+    clinicalCaseId,
+    dataOptions,
 ) => {
     const quizz = await prisma.quizz.create({
         data: {

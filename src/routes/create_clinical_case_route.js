@@ -175,22 +175,22 @@ router.post("/register", async (req, res) => {
     }
 
     const dataQuizz = {
-        questions: req.body.quizz.questions,
+        /*questions: req.body.quizz.questions,
         question: req.body.quizz.questions.question,
         options: req.body.quizz.questions.options,
-        answer: req.body.quizz.questions.answer
+        answer: req.body.quizz.questions.answer*/
     }
 
-    console.log(dataQuizz.questions.length);
+    //console.log(dataQuizz.questions.length);
 
     var questionsList = [];
 
-    for (var i = 0; i < dataQuizz.questions.length; i++) {
+    /*for (var i = 0; i < dataQuizz.questions.length; i++) {
         dataQuizz.question = req.body.quizz.questions[i].question;
         dataQuizz.options = req.body.quizz.questions[i].options;
         dataQuizz.answer = req.body.quizz.questions[i].answer;
         questionsList.push(dataQuizz.questions[i]);
-    }
+    }*/
 
     const result = await createClinicalCase(data, dataQuizz);
 

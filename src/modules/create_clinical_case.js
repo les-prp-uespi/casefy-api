@@ -2,9 +2,9 @@ const prisma = require("../database/database.js");
 
 const createClinicalCase = async (
     data,
-    dataFoodRecall,
-    dataFoodPlan,
-    dataQuizz
+    //dataFoodRecall,
+    //dataFoodPlan,
+    //dataQuizz
 ) => {
     const clinicalcase = await prisma.clinicalCase.create({
         data: {
