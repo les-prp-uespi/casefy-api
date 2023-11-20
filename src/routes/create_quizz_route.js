@@ -20,8 +20,6 @@ router.post("/createquizz/:id", async (req, res) => {
 
     const result = await createQuizz(clinicalCaseId, dataOptions);
 
-    console.log(dataOptions.questions.length);
-
     const quizzId = result.id;
 
     var questionsList = [];
@@ -29,12 +27,15 @@ router.post("/createquizz/:id", async (req, res) => {
 
     console.log(quizzId);
 
-    for (var i = 0; i < dataOptions.questions.length; i++) {
-        dataOptions.question = req.body.questions[i].question.toString();
-        dataOptions.options = req.body.questions[i].options;
-        dataOptions.answer = req.body.questions[i].answer;
-        questionsList.push(dataOptions.questions[i]);
-        resultOptions = await createQuizzOption(dataOptions.question, dataOptions.options, dataOptions.answer, quizzId);
+    console.log(dataOptions.question);
+    if (dataOptions.question != undefined) {
+        for (var i = 0; i < dataOptions.questions.length; i++) {
+            dataOptions.question = req.body.questions[i].question.toString();
+            dataOptions.options = req.body.questions[i].options;
+            dataOptions.answer = req.body.questions[i].answer;
+            questionsList.push(dataOptions.questions[i]);
+            resultOptions = await createQuizzOption(dataOptions.question, dataOptions.options, dataOptions.answer, quizzId);
+        }
     }
 
     if (result == null) {
