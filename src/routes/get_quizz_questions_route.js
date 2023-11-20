@@ -16,7 +16,7 @@ router.get("/quizz/questions/:id", async (req, res) => {
     if (result == null) {
         res.status(400).json({"message": "Quizz Questions Not Find"});
     } else {
-        res.status(200).json(result);
+        res.status(200).json({"quizzquestions":result});
     }
 });
 
